@@ -16,7 +16,7 @@ app.set('views',viewsPath )
 const partialsPath = path.join(__dirname,'../templates/partials')
 hbs.registerPartials(partialsPath)
 //
-app.get('',(req, res)=>{
+app.get('/',(req, res)=>{
     res.render('index',{
         title:'News Home Page',
 
@@ -24,13 +24,15 @@ app.get('',(req, res)=>{
 } )
 
 newsApi((err,res)=>{
-    if(error){
-        return res.send({error})
+    if(err){
+        return res.send({err})
       }
+      
       res.send({
-          artitle:re
+          artitle:res
       })
 })
+
 app.listen(port, () => {
     console.log('running',port)
   })
