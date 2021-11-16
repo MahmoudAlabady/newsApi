@@ -4,7 +4,7 @@ const app = express()
 const port = process.env.PORT || 3000
 const path = require('path');
 const hbs = require('hbs')
-const NewsApi = require('./tools/NewsApi')
+const newsApi = require('./tools/newsApi')
 //path
 const publicPath = path.join(__dirname,'../public')
 app.use(express.static(publicPath)) //public path
@@ -23,7 +23,14 @@ app.get('',(req, res)=>{
     })
 } )
 
-NewsApi()
+newsApi((err,res)=>{
+    if(error){
+        return res.send({error})
+      }
+      res.send({
+          artitle:re
+      })
+})
 app.listen(port, () => {
     console.log('running',port)
   })
