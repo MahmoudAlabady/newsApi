@@ -12,4 +12,4 @@ const newsApi = (callback)=>{
     })
 }
 
-module.exports = NewsApi
+module.exports = newsApi
